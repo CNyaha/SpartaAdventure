@@ -12,10 +12,13 @@ public class Player : MonoBehaviour
     public ItemData itemData;
     public Action additem;
 
+    public Transform dropPosition;
+
     private void Awake()
     {
         CharacterManager.Instance.Player = this;
         controller = GetComponent<PlayerController>();
         condition = GetComponent<PlayerCondition>();
+        dropPosition = GetComponentInChildren<Transform>().Find("DropPosition");
     }
 }

@@ -130,7 +130,7 @@
                 {
                     "name": "",
                     "id": "9f3efba7-d4aa-4add-844b-8e737b87805d",
-                    "path": "<WebGLGamepad>/{Back}",
+                    "path": "<Keyboard>/tab",
                     "interactions": "",
                     "processors": "",
                     "groups": "",

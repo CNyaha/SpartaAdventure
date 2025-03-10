@@ -1,8 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -19,17 +19,24 @@ public class PlayerController : MonoBehaviour
     private float charCurYRot;
     public float lookSensitive;
     private Vector2 mouseDelta;
+    public bool canLook = true;
+
+    public Action inventory;
+    public Action interation;
 
     private Rigidbody _rigidbody;
     private Camera _camera;
-    private Interaction interaction;
+    //private Interaction interaction;
+
+
 
 
     private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody>();
         _camera = Camera.main;
-        interaction = GetComponent<Interaction>();
+        //interaction = GetComponent<Interaction>();
+        
 
         
     }
@@ -47,7 +54,10 @@ public class PlayerController : MonoBehaviour
 
     private void LateUpdate()
     {
-        CharacterLook();
+        if (canLook)
+        {
+            CharacterLook();
+        }
     }
 
     void Move()
@@ -99,8 +109,25 @@ public class PlayerController : MonoBehaviour
     {
         if (context.phase == InputActionPhase.Started)
         {
-            interaction.OnInteract();
+            //interaction.OnInteract();
+            interation?.Invoke();
         }
+    }
+
+    public void OnInventory(InputAction.CallbackContext context)
+    {
+        if (context.phase == InputActionPhase.Started)
+        {
+            inventory?.Invoke();
+            ToggleCursor();
+        }
+    }
+
+    void ToggleCursor()
+    {
+        bool toggle = Cursor.lockState == CursorLockMode.Locked;
+        Cursor.lockState = toggle ? CursorLockMode.None : CursorLockMode.Locked;
+        canLook = !toggle;
     }
 
     bool isGrounded()

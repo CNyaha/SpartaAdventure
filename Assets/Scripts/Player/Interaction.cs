@@ -18,6 +18,8 @@ public class Interaction : MonoBehaviour
     public TextMeshProUGUI promptText;
     private Camera camera;
 
+    private PlayerController controller;
+
     private string canvasName = "Canvas";
 
 
@@ -61,6 +63,9 @@ public class Interaction : MonoBehaviour
     void Start()
     {
         camera = Camera.main;
+        controller = CharacterManager.Instance.Player.controller;
+
+        controller.interation += Interact;
     }
 
     // Update is called once per frame
@@ -97,7 +102,7 @@ public class Interaction : MonoBehaviour
         promptText.text = curInteractable.GetInteractPrompt();
     }
 
-    public void OnInteract()
+    public void Interact()
     {
         if (curInteractable != null)
         {
