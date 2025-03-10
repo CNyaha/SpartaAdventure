@@ -22,11 +22,16 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody _rigidbody;
     private Camera _camera;
+    private Interaction interaction;
+
 
     private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody>();
         _camera = Camera.main;
+        interaction = GetComponent<Interaction>();
+
+        
     }
 
     // Start is called before the first frame update
@@ -87,6 +92,14 @@ public class PlayerController : MonoBehaviour
         if (context.phase == InputActionPhase.Started && isGrounded())
         {
             _rigidbody.AddForce(Vector2.up * jumpPower, ForceMode.Impulse);
+        }
+    }
+
+    public void OnInterction(InputAction.CallbackContext context)
+    {
+        if (context.phase == InputActionPhase.Started)
+        {
+            interaction.OnInteract();
         }
     }
 
