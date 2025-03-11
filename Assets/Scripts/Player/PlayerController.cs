@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour
     public float maxXLook;
     private float charCurXRot;
     private float charCurYRot;
+    private float camCurXRot;
     public float lookSensitive;
     private Vector2 mouseDelta;
     public bool canLook = true;
@@ -26,7 +27,8 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody _rigidbody;
     private Camera _camera;
-    //private Interaction interaction;
+    private WallDtecte _wallDtecte;
+
 
 
 
@@ -35,8 +37,6 @@ public class PlayerController : MonoBehaviour
     {
         _rigidbody = GetComponent<Rigidbody>();
         _camera = Camera.main;
-        //interaction = GetComponent<Interaction>();
-        
 
         
     }
@@ -75,9 +75,12 @@ public class PlayerController : MonoBehaviour
     {
         charCurXRot += mouseDelta.y * lookSensitive;
         charCurXRot = Mathf.Clamp(charCurXRot, minXLook, maxXLook);
+
         charCurYRot += mouseDelta.x * lookSensitive;
 
-        transform.localEulerAngles = new Vector3(-charCurXRot, charCurYRot, 0);
+        transform.localEulerAngles = new Vector3(0, charCurYRot, 0);
+
+        _camera.transform.localEulerAngles = new Vector3(-charCurXRot, 0, 0);
     }
 
     public void OnMove(InputAction.CallbackContext context)
@@ -153,6 +156,7 @@ public class PlayerController : MonoBehaviour
 
     }
 
+
     private void OnDrawGizmos()
     {
         Vector3 origin1 = transform.position + (transform.forward * 0.2f) + (transform.up * 0.01f);
@@ -165,6 +169,8 @@ public class PlayerController : MonoBehaviour
         Gizmos.DrawLine(origin2, origin2 + Vector3.down * 0.2f);
         Gizmos.DrawLine(origin3, origin3 + Vector3.down * 0.2f);
         Gizmos.DrawLine(origin4, origin4 + Vector3.down * 0.2f);
+
+        Gizmos.color = Color.gray;
 
     }
 

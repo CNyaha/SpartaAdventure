@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6655919484638959440}
   - component: {fileID: 6081362747388230921}
   - component: {fileID: 7832952276899859785}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cookie
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 4726888070039680606}
   - component: {fileID: 1104091585808900820}
   - component: {fileID: 1769047655128441841}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Item_Cookie
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -133,7 +133,7 @@ SphereCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -177,5 +177,5 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0

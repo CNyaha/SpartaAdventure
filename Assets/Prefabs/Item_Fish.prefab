@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7579599264576277118}
   - component: {fileID: 1921649697443710534}
   - component: {fileID: 444831753077167326}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Fish
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 5754034843678921455}
   - component: {fileID: 5904481187689974860}
   - component: {fileID: 4898592922402019957}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Item_Fish
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -179,5 +179,5 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
