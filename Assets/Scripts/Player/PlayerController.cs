@@ -37,7 +37,7 @@ public class PlayerController : MonoBehaviour
     {
         _rigidbody = GetComponent<Rigidbody>();
         _camera = Camera.main;
-
+        _wallDtecte = GetComponentInChildren<WallDtecte>();
         
     }
 
@@ -49,7 +49,15 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
-        Move();
+        if (_wallDtecte.isTouchingWall && !isGrounded())
+        {
+
+        }
+        else
+        {
+            Move();
+
+        }
     }
 
     private void LateUpdate()
@@ -112,7 +120,6 @@ public class PlayerController : MonoBehaviour
     {
         if (context.phase == InputActionPhase.Started)
         {
-            //interaction.OnInteract();
             interation?.Invoke();
         }
     }
@@ -154,6 +161,16 @@ public class PlayerController : MonoBehaviour
 
         return false;
 
+    }
+
+    public void AddMoveSpeed(float value)
+    {
+        moveSpeed += value;
+    }
+
+    public void AddJumpPower(float value)
+    {
+        jumpPower += value;
     }
 
 

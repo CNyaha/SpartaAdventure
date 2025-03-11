@@ -16,7 +16,7 @@ public enum ConsumableType
     SpeedUp,
     JumpPower,
     God,
-    Random,
+    RandomEffect,
     Heal
 }
 
@@ -35,7 +35,6 @@ public class ItemData : ScriptableObject
     public string displayName;
     public string description;
     public ItemType type;
-    public ConsumableType consumableType;
     public Sprite icon;
     public GameObject dropPrefab;
 

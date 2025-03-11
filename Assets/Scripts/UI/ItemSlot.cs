@@ -11,7 +11,7 @@ public class ItemSlot : MonoBehaviour
     public Button button;
     public Image icon;
     public TextMeshProUGUI quantityText;
-    private Outline outline;
+    public Outline outline;
 
     public UIInventory inventory;
 
@@ -33,7 +33,11 @@ public class ItemSlot : MonoBehaviour
     }
     private void OnEnable()
     {
-        outline.enabled = equipped;
+        if (outline != null)
+        {
+            outline.enabled = equipped;
+
+        }
     }
 
     // Update is called once per frame
@@ -66,5 +70,6 @@ public class ItemSlot : MonoBehaviour
     {
         inventory.SelectItem(index);
     }
+
 
 }
