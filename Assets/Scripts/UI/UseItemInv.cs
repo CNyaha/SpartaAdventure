@@ -19,7 +19,14 @@ public class UseItemInv : MonoBehaviour
         controller = CharacterManager.Instance.Player.controller;
         condition = CharacterManager.Instance.Player.condition;
 
-        useItemCanvas.SetActive(false);
+        useItemCanvas.SetActive(true);
+
+        for (int i = 0; i < itemUseSlot.Length; i++)
+        {
+            itemUseSlot[i].gameObject.SetActive(false);
+        }
+
+
     }
 
     public void ReceiveItem(ItemSlot slotItem)
@@ -30,9 +37,9 @@ public class UseItemInv : MonoBehaviour
         if (emptySlot != null)
         {
             emptySlot.item = slotItem.item;
+            emptySlot.gameObject.SetActive(true);
 
 
-            useItemCanvas.SetActive(true);
             StartCoroutine(UseItem(emptySlot));
             UpdateUI();
 
@@ -114,7 +121,6 @@ public class UseItemInv : MonoBehaviour
 
         yield return new WaitForSeconds(_duration + 0.1f);
         RemoveItemFromUseSlot(emptySlot);
-        useItemCanvas.SetActive(false);
 
     }
 
@@ -123,6 +129,7 @@ public class UseItemInv : MonoBehaviour
         if (slot != null)
         {
             slot.Clear();
+            slot.gameObject.SetActive(false);
         }
     }
 
